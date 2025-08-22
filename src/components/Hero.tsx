@@ -48,11 +48,13 @@ function Hero() {
         pin: true,
       },
     });
-    videoRef.current.onloadedmetadata = () => {
-      videoTimeline.to(videoRef.current, {
-        currentTime: videoRef.current.duration,
-      });
-    };
+    if (videoRef.current) {
+      videoRef.current.onloadedmetadata = () => {
+        videoTimeline.to(videoRef.current, {
+          currentTime: videoRef.current!.duration,
+        });
+      };
+    }
   }, []);
 
   return (
